@@ -13,7 +13,7 @@
     },
     {
       "id": "635d1186-32b7-4704-b126-dae838f33c8f",
-      "text": "Members",a
+      "text": "Members",
       "type": "istar.Actor",
       "x": 2097,
       "y": 819,
