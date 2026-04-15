@@ -31,6 +31,7 @@ public class MembershipValidationWorker {
 
         Object raw = variablesAsMap.get("membershipNumber");
         Object ismember = variablesAsMap.get("ismember");
+       // Object register_member = variablesAsMap.get("register_member");
         Long membershipNumber = null;
 
         if (raw != null) {
