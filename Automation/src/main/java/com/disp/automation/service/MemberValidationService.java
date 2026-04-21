@@ -21,5 +21,5 @@ public class MemberValidationService {
         }
         Optional<Member> member = memberRepository.findByMemberId(membershipNumber);
         return member.isPresent();
-    }
 }
+    }
