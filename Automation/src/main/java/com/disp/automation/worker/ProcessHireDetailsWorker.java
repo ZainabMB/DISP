@@ -1,5 +1,6 @@
 package com.disp.automation.worker;
 
+import com.disp.automation.service.ProcessHireDetailsService;
 import io.camunda.zeebe.spring.client.annotation.JobWorker;
 import io.camunda.zeebe.client.api.response.ActivatedJob;
 import io.camunda.zeebe.client.api.worker.JobClient;
