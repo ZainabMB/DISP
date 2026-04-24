@@ -1,11 +1,21 @@
 package com.disp.automation.service;
 
+import com.disp.automation.entity.Tool;
+import com.disp.automation.repository.ToolRepository;
 import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 @Service
 public class ProcessPaymentService {
 
-    //validate and process payment based on method
+    private final ToolRepository toolRepository;
+
+    //insert tool repository to look up real prices
+    public ProcessPaymentService(ToolRepository toolRepository) {
+        this.toolRepository = toolRepository;
+    }
+
+    //validate payment & verify order total against database price
     public boolean processPayment(double orderTotal, String paymentMethod,
                                   String customerName, String cardNumber,
                                   String cardExpiry, String cardCVV) {
@@ -26,5 +36,11 @@ public class ProcessPaymentService {
             //unknown payment method
             return false;
         }
+    }
+
+    //look up item price from database
+    public Double getPriceFromDatabase(String toolName) {
+        Optional<Tool> tool = toolRepository.findByToolName(toolName);
+        return tool.map(Tool::getPrice).orElse(0.0);
     }
 }
