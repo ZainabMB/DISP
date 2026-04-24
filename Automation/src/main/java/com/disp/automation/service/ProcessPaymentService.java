@@ -1,4 +1,4 @@
-package com.disp.automation;
+package com.disp.automation.service;
 
 import org.springframework.stereotype.Service;
 
