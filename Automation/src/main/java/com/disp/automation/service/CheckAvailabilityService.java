@@ -32,10 +32,9 @@ public class CheckAvailabilityService {
                 .collect(Collectors.toList());
     }
     public boolean isQuantityAvailable(String toolName, int requestedQuantity) {
-        List<Tool> tools = toolRepository.findByToolType(toolName);
-        if (tools.isEmpty()) return false;
-        Tool tool = tools.get(0);
-        return requestedQuantity >= 1 && requestedQuantity <= tool.getQuantity();
+        return toolRepository.findByToolName(toolName)
+                .map(tool -> requestedQuantity >= 1 && requestedQuantity <= tool.getQuantity())
+                .orElse(false);
     }
 
     //calculate price

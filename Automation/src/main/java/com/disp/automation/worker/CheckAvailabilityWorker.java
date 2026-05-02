@@ -39,6 +39,12 @@ public class CheckAvailabilityWorker {
             logger.info("availableTools returned: {}", availableTools);
             result.put("availableTools", availableTools);
 
+            // Set availableStock from DB via availableTools
+            availableTools.stream()
+                    .filter(t -> toolName != null && toolName.equals(t.get("value")))
+                    .findFirst()
+                    .ifPresent(t -> result.put("availableStock", t.get("quantity")));
+
             if (toolName != null && !toolName.isEmpty() && quantityRaw != null) {
                 int quantity = Integer.parseInt(quantityRaw.toString());
                 boolean itemAvailable = checkAvailabilityService.isQuantityAvailable(toolName, quantity);

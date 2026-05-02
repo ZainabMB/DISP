@@ -1,7 +1,9 @@
 package com.disp.automation.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.ColumnDefault;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -26,6 +28,11 @@ public class Member {
 
     @Column(name = "phone_number" )
     private String phoneNumber;
+    @ColumnDefault("CURRENT_DATE")
+    @Column(name = "created_at", nullable = false)
+    private LocalDate createdAt;
+    @Column(name = "loyalty_points")
+    private Integer loyaltyPoints;
 
     //getters and setters
 
@@ -76,5 +83,21 @@ public class Member {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Integer getLoyaltyPoints() {
+        return loyaltyPoints;
+    }
+
+    public void setLoyaltyPoints(Integer loyaltyPoints) {
+        this.loyaltyPoints = loyaltyPoints;
     }
 }
