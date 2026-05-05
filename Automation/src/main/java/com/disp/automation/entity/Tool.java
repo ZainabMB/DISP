@@ -1,6 +1,7 @@
 package com.disp.automation.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Formula;
 
 @Entity
 @Table(name = "tool", schema = "probuilds")
@@ -22,7 +23,7 @@ public class Tool {
     @Column(name = "tool_type", length = Integer.MAX_VALUE)
     private String toolType;
 
-    @Column(name = "quantity", nullable = false)
+    @Formula("(SELECT COUNT(*) FROM probuilds.tool_instance ti WHERE ti.tool_id = tool_id AND ti.status = 'AVAILABLE')")
     private Integer quantity;
 
     @Enumerated(EnumType.STRING)

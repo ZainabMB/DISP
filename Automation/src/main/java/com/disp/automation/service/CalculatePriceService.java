@@ -26,7 +26,7 @@ public class CalculatePriceService {
         this.memberRepository = memberRepository;
     }
 
-    public Map<String, Object> calculatePrice(String toolType, String toolName, int quantity, String membershipNumber, boolean register_member) {
+    public Map<String, Object> calculatePrice(String toolType, String toolName, int quantity, String membershipNumber, boolean register_member, int hireDays) {
         Map<String, Object> result = new HashMap<>();
 
         double unitPrice = toolRepository.findByToolName(toolName)
@@ -42,6 +42,10 @@ public class CalculatePriceService {
             logger.info("Membership registration fee of £10 added — new total: {}", Math.round(totalPrice));
         } else {
             result.put("membershipFee", 0);
+        }
+        if (toolType == "HIRE"){
+            totalPrice *= hireDays;
+            result.put("hire for " + hireDays + " costs: £{}", Math.round(totalPrice) );
         }
 
         result.put("totalPrice", Math.round(totalPrice));

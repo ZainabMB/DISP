@@ -26,12 +26,9 @@ public class InformCustomerWorker {
 
         Map<String, Object> vars = job.getVariablesAsMap();
         logger.info("Worker triggered — informing customer that order is ready. Job key: {}", job.getKey());
-        logger.info("Variables received: {}", vars);
 
-        // Extract orderId
         String orderId = (String) vars.get("orderId");
 
-        logger.info("Sending message with orderId: {}", orderId);
         if (orderId == null) {
             logger.error("orderId is null — cannot send order ready message");
             client.newFailCommand(job.getKey())
@@ -42,14 +39,24 @@ public class InformCustomerWorker {
             return;
         }
 
-        // Send message
-        informCustomerService.sendOrderReady(orderId, vars);
+        logger.info("Sending order ready message for orderId: {}", orderId);
 
-        // Complete the task
-        client.newCompleteCommand(job.getKey())
-                .send()
-                .join();
+        try {
+            informCustomerService.sendOrderReady(orderId, vars);
 
-        logger.info("Order ready message sent successfully for orderId {}", orderId);
+            client.newCompleteCommand(job.getKey())
+                    .send()
+                    .join();
+
+            logger.info("Order ready message sent successfully for orderId: {}", orderId);
+
+        } catch (Exception e) {
+            logger.error("informCustomer failed for orderId {}: {}", orderId, e.getMessage());
+            client.newFailCommand(job.getKey())
+                    .retries(job.getRetries() - 1)
+                    .errorMessage(e.getMessage())
+                    .send()
+                    .join();
+        }
     }
 }

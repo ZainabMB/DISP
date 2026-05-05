@@ -28,6 +28,8 @@ public class CalculatePriceWorker {
         String toolName        = (String) vars.get("toolName");
         int quantity           = vars.get("quantity") != null
                 ? Integer.parseInt(vars.get("quantity").toString()) : 1;
+        int hireDays = (int) vars.get("hireDays");
+
         String membershipNumber = vars.get("membershipNumber") != null
                 ? vars.get("membershipNumber").toString() : "no_member";
         boolean register_member = Boolean.parseBoolean(
