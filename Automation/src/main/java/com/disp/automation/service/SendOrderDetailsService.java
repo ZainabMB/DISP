@@ -18,7 +18,7 @@ public class SendOrderDetailsService {
 
         camundaClient
                 .newPublishMessageCommand()
-                .messageName("orderDetails")
+                .messageName("orderDetailsReceived")
                 .correlationKey(orderId)
                 .variables(vars)
                 .send()
