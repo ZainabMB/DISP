@@ -21,7 +21,7 @@ public class SendOrderDetailsWorker {
         this.sendOrderDetailsService = sendOrderDetailsService;
     }
 
-    @JobWorker(type = "sendOrderDetails", autoComplete = false)
+    @JobWorker(type = "orderDetails", autoComplete = false)
     public void handleSendOrderDetails(final JobClient client, final ActivatedJob job) {
 
         Map<String, Object> vars = job.getVariablesAsMap();
