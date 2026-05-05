@@ -1,15 +1,15 @@
 package com.disp.automation.service;
 
-import com.disp.automation.repository.CreditApplicationRepository;
+import com.disp.automation.entity.CreditPlan;
 import com.disp.automation.repository.CreditPlanRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CreditApplicationService {
+public class ProcessApplicationService {
 
     private final CreditPlanRepository creditPlanRepository;
 
-    public CreditApplicationService(CreditPlanRepository creditPlanRepository) {
+    public ProcessApplicationService(CreditPlanRepository creditPlanRepository) {
         this.creditPlanRepository = creditPlanRepository;
     }
 
@@ -17,6 +17,6 @@ public class CreditApplicationService {
         if (memberId == null) {
             return false;
         }
-        return creditPlanRepository.existsByMemberIdAndActiveTrue(memberId);
+        return creditPlanRepository.existsByMemberIdAndStatus(memberId, CreditPlan.Status.ACTIVE);
     }
 }

@@ -31,7 +31,7 @@ public class CreateCreditPlanWorker {
 
         CreditPlan plan = createCreditPlanService.createPlan(vars);
 
-        logger.info("Credit plan created successfully with ID: {}", plan.getId());
+        logger.info("Credit plan created successfully with ID: {}", plan.getMemberId());
 
         client.newCompleteCommand(job.getKey())
                 .send()

@@ -1,36 +1,41 @@
 package com.disp.automation.entity;
 
 import jakarta.persistence.*;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "credit_plan")
+@Table(name = "credit_plan", schema="fintrust")
 public class CreditPlan {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "application_id")
+    private String applicationId;  // PK, set manually from process variable
 
+    @Column(name = "member_id")
     private Long memberId;
 
-    private String applicationId;
-
+    @Column(name = "duration_months")
     private Integer durationMonths;
-
+    @Column(name = "total_price")
     private Double totalPrice;
-
-    private Double monthlyPayment;
-
+    @Column(name = "monthly_payment")
+    private BigDecimal monthlyPayment;
+    @Column(name = "start_date")
     private LocalDate startDate;
 
-    private boolean active;
+    @Column(name = "end_date")
+    private LocalDate endDate;
+// + getter and setter
 
-    public Long getId() {
-        return id;
-    }
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Status status;
 
-    public void setId(Long id) {
-        this.id = id;
+    public enum Status {
+        ACTIVE,
+        INACTIVE
     }
 
     public Long getMemberId() {
@@ -65,11 +70,11 @@ public class CreditPlan {
         this.totalPrice = totalPrice;
     }
 
-    public Double getMonthlyPayment() {
+    public BigDecimal getMonthlyPayment() {
         return monthlyPayment;
     }
 
-    public void setMonthlyPayment(Double monthlyPayment) {
+    public void setMonthlyPayment(BigDecimal monthlyPayment) {
         this.monthlyPayment = monthlyPayment;
     }
 
@@ -81,12 +86,19 @@ public class CreditPlan {
         this.startDate = startDate;
     }
 
-    public boolean isActive() {
-        return active;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 }
-

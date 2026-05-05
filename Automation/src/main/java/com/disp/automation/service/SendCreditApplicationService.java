@@ -18,7 +18,7 @@ public class SendCreditApplicationService {
 
         camundaClient
                 .newPublishMessageCommand()
-                .messageName("CreditApplicationRequest")
+                .messageName("creditApplicationReceived")
                 .correlationKey(applicationId)
                 .variables(vars)
                 .send()

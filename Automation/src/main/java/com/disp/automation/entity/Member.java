@@ -29,13 +29,23 @@ public class Member {
     @Column(name = "phone_number" )
     private String phoneNumber;
     @ColumnDefault("CURRENT_DATE")
-    @Column(name = "created_at", nullable = false)
-    private LocalDate createdAt;
+
     @Column(name = "loyalty_points")
     private Integer loyaltyPoints;
 
     //getters and setters
+    @Column(name = "created_at", nullable = false)
+    private LocalDate createdAt;
 
+    @PrePersist
+    protected void onCreate() {
+        if (createdAt == null) {
+            createdAt = LocalDate.now();
+        }
+        if (loyaltyPoints == null) {
+            loyaltyPoints = 0;
+        }
+    }
 
     public Long getMemberId() {
         return memberId;

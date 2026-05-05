@@ -5,6 +5,7 @@ import com.disp.automation.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Service
@@ -23,8 +24,9 @@ public class MemberRegistrationService {
         member.setSurname(lastName);
         member.setEmail(email);
         member.setPhoneNumber(phoneNumber);
+        member.setCreatedAt(LocalDate.now());  // add this
+        member.setLoyaltyPoints(0);            // add this
 
-        // dateOfBirth comes from Camunda form as a string e.g. "2000-01-25"
         if (dateOfBirth != null && !dateOfBirth.isEmpty()) {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date dob = sdf.parse(dateOfBirth);
@@ -33,4 +35,6 @@ public class MemberRegistrationService {
 
         return memberRepository.save(member);
     }
+
+
 }

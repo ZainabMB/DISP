@@ -1,43 +1,46 @@
 package com.disp.automation.worker;
 
 import com.disp.automation.service.ProcessPaymentService;
-import io.camunda.zeebe.spring.client.annotation.JobWorker;
-import io.camunda.zeebe.client.api.response.ActivatedJob;
-import io.camunda.zeebe.client.api.worker.JobClient;
+import io.camunda.client.annotation.JobWorker;
+import io.camunda.client.api.response.ActivatedJob;
+import io.camunda.client.api.worker.JobClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
 import java.util.Map;
 
 @Component
 public class ProcessPaymentWorker {
 
+    private static final Logger logger = LoggerFactory.getLogger(ProcessPaymentWorker.class);
     private final ProcessPaymentService processPaymentService;
 
-    //inject service
     public ProcessPaymentWorker(ProcessPaymentService processPaymentService) {
         this.processPaymentService = processPaymentService;
     }
 
-    @JobWorker(type = "processPayment")
+    @JobWorker(type = "processPayment", autoComplete = false)
     public void processPayment(final JobClient client, final ActivatedJob job) {
         Map<String, Object> vars = job.getVariablesAsMap();
+        logger.info("processPayment triggered — vars: {}", vars);
 
-        //read variables set by the form
-        double orderTotal    = ((Number) vars.getOrDefault("orderTotal", 0.0)).doubleValue();
-        String paymentMethod = (String) vars.getOrDefault("paymentMethod", "unknown");
-        String customerName  = (String) vars.getOrDefault("customerName", "");
-        String cardNumber    = (String) vars.getOrDefault("cardNumber", "");
-        String cardExpiry    = (String) vars.getOrDefault("cardExpiry", "");
-        String cardCVV       = (String) vars.getOrDefault("cardCVV", "");
+        try {
+            Map<String, Object> result = processPaymentService.processPayment(vars);
+            logger.info("Payment result: {}", result);
 
-        //call service to handle the logic
-        boolean paymentCompleted = processPaymentService.processPayment(
-                orderTotal, paymentMethod, customerName, cardNumber, cardExpiry, cardCVV
-        );
+            client.newCompleteCommand(job.getKey())
+                    .variables(result)
+                    .send()
+                    .join();
 
-        client.newCompleteCommand(job.getKey())
-                .variable("paymentCompleted", paymentCompleted)
-                .variable("paymentMethod", paymentMethod)
-                .variable("amountPaid", orderTotal)
-                .send().join();
+        } catch (Exception e) {
+            logger.error("processPayment failed: {}", e.getMessage());
+            client.newFailCommand(job.getKey())
+                    .retries(job.getRetries() - 1)
+                    .errorMessage(e.getMessage())
+                    .send()
+                    .join();
+        }
     }
 }

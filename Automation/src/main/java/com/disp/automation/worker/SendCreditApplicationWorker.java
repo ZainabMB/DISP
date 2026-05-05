@@ -32,7 +32,15 @@ public class SendCreditApplicationWorker {
         String applicationId = (String) vars.get("applicationId");
 
         logger.info("Sending message with applicationId: {}", applicationId);
-
+        if (applicationId == null) {
+            logger.error("applicationId is null — cannot send credit application");
+            client.newFailCommand(job.getKey())
+                    .retries(0)
+                    .errorMessage("applicationId is missing")
+                    .send()
+                    .join();
+            return;
+        }
         // Send message to FinTrust
         sendCreditApplicationService.sendCreditApplication(applicationId, vars);
 

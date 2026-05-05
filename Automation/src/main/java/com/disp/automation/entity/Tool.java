@@ -9,13 +9,10 @@ public class Tool {
     public enum AvailabilityStatus {
         available, unavailable
     }
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tool_id_gen")
-    @SequenceGenerator(name = "tool_id_gen", sequenceName = "tool_tool_id_seq", allocationSize = 1)
-    @Column(name = "tool_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "tool_id")
     private Long toolId;
-
     @Column(name = "tool_name", length = Integer.MAX_VALUE)
     private String toolName;
 
@@ -32,11 +29,11 @@ public class Tool {
     @Column(name = "availability", columnDefinition = "probuilds.availability_status", insertable = false, updatable = false)
     private AvailabilityStatus availability;
 
-    public Long getId() {
+    public Long getToolId() {
         return toolId;
     }
 
-    public void setId(Long toolId) {
+    public void setToolId(Long toolId) {
         this.toolId = toolId;
     }
 

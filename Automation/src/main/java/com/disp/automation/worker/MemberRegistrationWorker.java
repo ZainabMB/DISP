@@ -44,6 +44,8 @@ public class MemberRegistrationWorker {
 
             result.put("membershipNumber", saved.getMemberId());
             result.put("ismember", "yes_member");
+            result.put("memberId", saved.getMemberId().toString());
+
 
             client.newCompleteCommand(job.getKey())
                     .variables(result)
