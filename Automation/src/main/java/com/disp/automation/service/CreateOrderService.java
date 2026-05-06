@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -33,7 +34,7 @@ public class CreateOrderService {
         this.orderToolInstanceRepository = orderToolInstanceRepository;
     }
 
-    public String createOrder(Map<String, Object> vars) {
+    public Map<String, Object> createOrder(Map<String, Object> vars) {
 
         String toolType            = vars.getOrDefault("toolType", "").toString();
         String toolName            = vars.getOrDefault("toolName", "").toString();
@@ -58,7 +59,7 @@ public class CreateOrderService {
 
         Long toolId = tool.getToolId();
 
-// Fetch available instances
+        // Fetch available instances
         List<ToolInstance> availableInstances = toolInstanceRepository
                 .findByToolIdAndStatus(toolId, ToolInstance.ToolInstanceStatus.AVAILABLE);
 
@@ -69,10 +70,12 @@ public class CreateOrderService {
             );
         }
 
-// Generate orderId BEFORE the loop
+        // Generate orderId BEFORE the loop
         String orderId = UUID.randomUUID().toString();
+        String orderDate = LocalDate.now().toString();
+        String serialNumber = null;
 
-// Mark the required number of instances as HIRED or SOLD
+        // Mark the required number of instances as HIRED or SOLD
         ToolInstance.ToolInstanceStatus newStatus = toolType.equalsIgnoreCase("SALE")
                 ? ToolInstance.ToolInstanceStatus.SOLD
                 : ToolInstance.ToolInstanceStatus.HIRED;
@@ -93,8 +96,7 @@ public class CreateOrderService {
                     toolName, orderId, instance.getInstanceId());
         });
 
-// Then save the order below...
-
+        // Then save the order below...
         if (toolType.equalsIgnoreCase("HIRE")) {
             HireOrder order = new HireOrder();
             order.setOrderId(orderId);
@@ -106,11 +108,15 @@ public class CreateOrderService {
             order.setDistributionType(HireOrder.DistributionType.valueOf(distributionTypeRaw.toUpperCase()));
             order.setOrderDate(LocalDate.now());
             order.setStatus(HireOrder.HireStatus.PENDING);
-// conditionAtIssue, conditionNotes, issueDate, expectedReturn, actualReturn
-// are intentionally left null — set later by ActivateRentalAgreementService
+            // conditionAtIssue, conditionNotes, issueDate, expectedReturn, actualReturn
+            // are intentionally left null — set later by ActivateRentalAgreementService
             hireOrderRepository.save(order);
-            logger.info("Hire order created — orderId: {}, toolId: {}, memberId: {}, quantity: {}",
-                    orderId, toolId, memberId, quantity);
+
+            // Capture serial number from the single hired instance
+            serialNumber = instancesToUpdate.get(0).getSerialNumber();
+
+            logger.info("Hire order created — orderId: {}, toolId: {}, memberId: {}, quantity: {}, serialNumber: {}",
+                    orderId, toolId, memberId, quantity, serialNumber);
 
         } else if (toolType.equalsIgnoreCase("SALE")) {
             SaleOrder order = new SaleOrder();
@@ -131,6 +137,12 @@ public class CreateOrderService {
             throw new IllegalArgumentException("Unknown toolType: " + toolType);
         }
 
-        return orderId;
+        Map<String, Object> result = new HashMap<>();
+        result.put("orderId", orderId);
+        result.put("orderDate", orderDate);
+        if (serialNumber != null) {
+            result.put("serialNumber", serialNumber);
+        }
+        return result;
     }
 }

@@ -28,11 +28,12 @@ public class CreateOrderWorker {
         logger.info("createOrder worker triggered — job key: {}", job.getKey());
 
         try {
-            String orderId = createOrderService.createOrder(vars);
-            logger.info("Order created successfully — orderId: {}", orderId);
+            Map<String, Object> result = createOrderService.createOrder(vars);
+            logger.info("Order created successfully — orderId: {}, orderDate: {}, serialNumber: {}",
+                    result.get("orderId"), result.get("orderDate"), result.get("serialNumber"));
 
             client.newCompleteCommand(job.getKey())
-                    .variable("orderId", orderId)
+                    .variables(result)
                     .send()
                     .join();
 
