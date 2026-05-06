@@ -46,7 +46,7 @@
       "layout": {
         "row": "Row_093ve9v"
       },
-      "description": "*£2 delivery fee",
+      "description": "*£4 delivery fee",
       "validate": {
         "required": true
       }
