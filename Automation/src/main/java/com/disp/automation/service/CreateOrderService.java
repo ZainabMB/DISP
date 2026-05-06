@@ -106,6 +106,8 @@ public class CreateOrderService {
             order.setDistributionType(HireOrder.DistributionType.valueOf(distributionTypeRaw.toUpperCase()));
             order.setOrderDate(LocalDate.now());
             order.setStatus(HireOrder.HireStatus.PENDING);
+// conditionAtIssue, conditionNotes, issueDate, expectedReturn, actualReturn
+// are intentionally left null — set later by ActivateRentalAgreementService
             hireOrderRepository.save(order);
             logger.info("Hire order created — orderId: {}, toolId: {}, memberId: {}, quantity: {}",
                     orderId, toolId, memberId, quantity);

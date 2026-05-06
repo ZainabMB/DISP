@@ -15,11 +15,8 @@ public class MemberValidationService {
         this.memberRepository = memberRepository;
     }
 
-    public boolean validateMember(Long membershipNumber) {
-        if (membershipNumber == null) {
-            return false;
-        }
-        Optional<Member> member = memberRepository.findByMemberId(membershipNumber);
-        return member.isPresent();
-}
+    public Optional<Member> validateMember(Long membershipNumber) {
+        if (membershipNumber == null) return Optional.empty();
+        return memberRepository.findByMemberId(membershipNumber);
     }
+}

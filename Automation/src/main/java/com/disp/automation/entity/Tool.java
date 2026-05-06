@@ -23,8 +23,6 @@ public class Tool {
     @Column(name = "tool_type", length = Integer.MAX_VALUE)
     private String toolType;
 
-    @Formula("(SELECT COUNT(*) FROM probuilds.tool_instance ti WHERE ti.tool_id = tool_id AND ti.status = 'AVAILABLE')")
-    private Integer quantity;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "availability", columnDefinition = "probuilds.availability_status", insertable = false, updatable = false)
@@ -62,16 +60,5 @@ public class Tool {
         this.toolType = toolType;
     }
 
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public AvailabilityStatus getAvailability() {
-        return availability;
-    }
 
 }

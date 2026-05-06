@@ -41,16 +41,28 @@ public class ActivateRentalAgreementWorker {
             return;
         }
 
-        HireOrder updatedOrder = activateRentalAgreementService.activateRentalAgreement(orderId);
+        try {
+            HireOrder updatedOrder = activateRentalAgreementService.activateRentalAgreement(orderId, vars);
 
-        // Add updated status back into process variables
-        vars.put("status", updatedOrder.getStatus().name());
+            client.newCompleteCommand(job.getKey())
+                    .variable("hireStatus", updatedOrder.getStatus().name())
+                    .variable("issueDate", updatedOrder.getIssueDate() != null
+                            ? updatedOrder.getIssueDate().toString() : null)
+                    .variable("expectedReturn", updatedOrder.getExpectedReturn() != null
+                            ? updatedOrder.getExpectedReturn().toString() : null)
+                    .send()
+                    .join();
 
-        client.newCompleteCommand(job.getKey())
-                .variables(vars)
-                .send()
-                .join();
+            logger.info("Rental agreement activated for orderId {} — status: {}, issueDate: {}, expectedReturn: {}",
+                    orderId, updatedOrder.getStatus(), updatedOrder.getIssueDate(), updatedOrder.getExpectedReturn());
 
-        logger.info("Rental agreement activated for orderId {}", orderId);
+        } catch (Exception e) {
+            logger.error("activateRentalAgreement failed for orderId {}: {}", orderId, e.getMessage());
+            client.newFailCommand(job.getKey())
+                    .retries(job.getRetries() - 1)
+                    .errorMessage(e.getMessage())
+                    .send()
+                    .join();
+        }
     }
 }

@@ -26,8 +26,8 @@ public class CalculatePriceService {
         this.memberRepository = memberRepository;
     }
 
-    public Map<String, Object> calculatePrice(String toolType, String toolName, int quantity, String membershipNumber, boolean register_member, int hireDays) {
-        Map<String, Object> result = new HashMap<>();
+    public Map<String, Object> calculatePrice(String toolType, String toolName, int quantity,
+                                              String membershipNumber, boolean register_member, int hireDays, String distributionType) {Map<String, Object> result = new HashMap<>();
 
         double unitPrice = toolRepository.findByToolName(toolName)
                 .map(tool -> tool.getPrice())
@@ -35,17 +35,29 @@ public class CalculatePriceService {
 
         double totalPrice = unitPrice * quantity;
 
-        // Add £10 membership registration fee
+// Multiply by hireDays for hire orders
+        if (toolType.equalsIgnoreCase("HIRE") && hireDays > 0) {
+            totalPrice = unitPrice * quantity * hireDays;
+            logger.info("Hire pricing — unitPrice: {}, quantity: {}, hireDays: {}, totalPrice: {}",
+                    unitPrice, quantity, hireDays, Math.round(totalPrice));
+        }
+
+// Add £4 delivery fee
+        if (distributionType != null && distributionType.equalsIgnoreCase("delivery")) {
+            totalPrice += 4;
+            result.put("deliveryFee", 4);
+            logger.info("Delivery fee of £4 added — new total: {}", Math.round(totalPrice));
+        } else {
+            result.put("deliveryFee", 0);
+        }
+
+// Add £10 membership registration fee
         if (register_member) {
             totalPrice += 10;
             result.put("membershipFee", 10);
             logger.info("Membership registration fee of £10 added — new total: {}", Math.round(totalPrice));
         } else {
             result.put("membershipFee", 0);
-        }
-        if (toolType == "HIRE"){
-            totalPrice *= hireDays;
-            result.put("hire for " + hireDays + " costs: £{}", Math.round(totalPrice) );
         }
 
         result.put("totalPrice", Math.round(totalPrice));

@@ -1,5 +1,6 @@
 package com.disp.automation.worker;
 
+import com.disp.automation.entity.Member;
 import com.disp.automation.service.MemberValidationService;
 import io.camunda.client.annotation.JobWorker;
 import io.camunda.client.api.response.ActivatedJob;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Component
 public class MembershipValidationWorker {
@@ -42,39 +44,49 @@ public class MembershipValidationWorker {
 
         HashMap<String, Object> variables = new HashMap<>();
 
-        if ("no_member".equals(ismember)) {
-            // Customer selected they are not a member — skip validation entirely
-            variables.put("ismember", "no_member");
-            logger.info("Customer is not a member, skipping validation");
-
-            client.newCompleteCommand(job.getKey())
-                    .variables(variables)
-                    .send()
-                    .join();
-
-        } else if ("yes_member".equals(ismember)) {
-            // Customer claims to be a member — validate membership number
-            boolean isMember = memberValidationService.validateMember(membershipNumber);
-
-            if (isMember) {
-                variables.put("ismember", "yes_member");
-                variables.put("membershipNumber", membershipNumber);
-                logger.info("Valid member found — membershipNumber: {}", membershipNumber);
+        try {
+            if ("no_member".equals(ismember)) {
+                variables.put("ismember", "no_member");
+                logger.info("Customer is not a member, skipping validation");
 
                 client.newCompleteCommand(job.getKey())
                         .variables(variables)
                         .send()
                         .join();
 
-            } else {
-                logger.warn("Membership number {} not found in DB, throwing BPMN error", membershipNumber);
+            } else if ("yes_member".equals(ismember)) {
+                Optional<Member> memberOpt = memberValidationService.validateMember(membershipNumber);
 
-                client.newThrowErrorCommand(job.getKey())
-                        .errorCode("invalid_membership_id")
-                        .errorMessage("Membership number " + membershipNumber + " does not match any member")
-                        .send()
-                        .join();
+                if (memberOpt.isPresent()) {
+                    Member member = memberOpt.get();
+                    variables.put("ismember", "yes_member");
+                    variables.put("membershipNumber", membershipNumber);
+                    variables.put("firstName", member.getFirstname());
+                    variables.put("lastName", member.getSurname());
+                    logger.info("Valid member found — membershipNumber: {}, name: {} {}",
+                            membershipNumber, member.getFirstname(), member.getSurname());
+
+                    client.newCompleteCommand(job.getKey())
+                            .variables(variables)
+                            .send()
+                            .join();
+
+                } else {
+                    logger.warn("Membership number {} not found in DB", membershipNumber);
+                    client.newThrowErrorCommand(job.getKey())
+                            .errorCode("invalid_membership_id")
+                            .errorMessage("Membership number " + membershipNumber + " does not match any member")
+                            .send()
+                            .join();
+                }
             }
+        } catch (Exception e) {
+            logger.error("membershipValidation failed: {}", e.getMessage());
+            client.newFailCommand(job.getKey())
+                    .retries(job.getRetries() - 1)
+                    .errorMessage(e.getMessage())
+                    .send()
+                    .join();
         }
     }
 }

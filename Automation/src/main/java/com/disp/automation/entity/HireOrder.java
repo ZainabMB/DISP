@@ -38,6 +38,22 @@ public class HireOrder {
     @Column(name = "status", nullable = false)
     private HireStatus status;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "condition_at_issue")
+    private ToolCondition conditionAtIssue;
+
+    @Column(name = "condition_notes")
+    private String conditionNotes;
+
+    @Column(name = "issue_date")
+    private LocalDate issueDate;
+
+    @Column(name = "expected_return")
+    private LocalDate expectedReturn;
+
+    @Column(name = "actual_return")
+    private LocalDate actualReturn;
+
     public enum PaymentMethod {
         CASH, CARD
     }
@@ -47,78 +63,54 @@ public class HireOrder {
     }
 
     public enum HireStatus {
-        PENDING, PICKED_UP
+        PENDING, PICKED_UP, RETURNED
     }
 
-    public String getOrderId() {
-        return orderId;
+    public enum ToolCondition {
+        NEW, GOOD, FAIR, DAMAGED
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
+    // existing getters and setters
 
-    public Long getMemberId() {
-        return memberId;
-    }
+    public ToolCondition getConditionAtIssue() { return conditionAtIssue; }
+    public void setConditionAtIssue(ToolCondition conditionAtIssue) { this.conditionAtIssue = conditionAtIssue; }
 
-    public void setMemberId(Long memberId) {
-        this.memberId = memberId;
-    }
+    public String getConditionNotes() { return conditionNotes; }
+    public void setConditionNotes(String conditionNotes) { this.conditionNotes = conditionNotes; }
 
-    public Long getToolId() {
-        return toolId;
-    }
+    public LocalDate getIssueDate() { return issueDate; }
+    public void setIssueDate(LocalDate issueDate) { this.issueDate = issueDate; }
 
-    public void setToolId(Long toolId) {
-        this.toolId = toolId;
-    }
+    public LocalDate getExpectedReturn() { return expectedReturn; }
+    public void setExpectedReturn(LocalDate expectedReturn) { this.expectedReturn = expectedReturn; }
 
-    public HireStatus getStatus() {
-        return status;
-    }
+    public LocalDate getActualReturn() { return actualReturn; }
+    public void setActualReturn(LocalDate actualReturn) { this.actualReturn = actualReturn; }
 
-    public void setStatus(HireStatus status) {
-        this.status = status;
-    }
+    public String getOrderId() { return orderId; }
+    public void setOrderId(String orderId) { this.orderId = orderId; }
 
-    public Integer getQuantity() {
-        return quantity;
-    }
+    public Long getMemberId() { return memberId; }
+    public void setMemberId(Long memberId) { this.memberId = memberId; }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
+    public Long getToolId() { return toolId; }
+    public void setToolId(Long toolId) { this.toolId = toolId; }
 
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
+    public HireStatus getStatus() { return status; }
+    public void setStatus(HireStatus status) { this.status = status; }
 
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
+    public Integer getQuantity() { return quantity; }
+    public void setQuantity(Integer quantity) { this.quantity = quantity; }
 
-    public PaymentMethod getPaymentMethod() {
-        return paymentMethod;
-    }
+    public Double getTotalPrice() { return totalPrice; }
+    public void setTotalPrice(Double totalPrice) { this.totalPrice = totalPrice; }
 
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
+    public PaymentMethod getPaymentMethod() { return paymentMethod; }
+    public void setPaymentMethod(PaymentMethod paymentMethod) { this.paymentMethod = paymentMethod; }
 
-    public DistributionType getDistributionType() {
-        return distributionType;
-    }
+    public DistributionType getDistributionType() { return distributionType; }
+    public void setDistributionType(DistributionType distributionType) { this.distributionType = distributionType; }
 
-    public void setDistributionType(DistributionType distributionType) {
-        this.distributionType = distributionType;
-    }
-
-    public LocalDate getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(LocalDate orderDate) {
-        this.orderDate = orderDate;
-    }
+    public LocalDate getOrderDate() { return orderDate; }
+    public void setOrderDate(LocalDate orderDate) { this.orderDate = orderDate; }
 }

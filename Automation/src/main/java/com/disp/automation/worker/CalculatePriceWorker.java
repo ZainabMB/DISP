@@ -23,17 +23,20 @@ public class CalculatePriceWorker {
     @JobWorker(type = "calculatePrice", autoComplete = false)
     public void handleCalculatePrice(final JobClient client, final ActivatedJob job) {
         Map<String, Object> vars = job.getVariablesAsMap();
-
+        String distributionType = vars.get("distributionType") != null
+                ? vars.get("distributionType").toString() : "pickup";
         String toolType        = (String) vars.get("toolType");
         String toolName        = (String) vars.get("toolName");
         int quantity           = vars.get("quantity") != null
                 ? Integer.parseInt(vars.get("quantity").toString()) : 1;
-        int hireDays = (int) vars.get("hireDays");
+        int hireDays = vars.get("hireDays") != null
+                ? Integer.parseInt(vars.get("hireDays").toString()) : 0;
 
         String membershipNumber = vars.get("membershipNumber") != null
                 ? vars.get("membershipNumber").toString() : "no_member";
         boolean register_member = Boolean.parseBoolean(
                 vars.getOrDefault("register_member", "false").toString()
+
         );
 
         logger.info("calculatePrice — toolType: {}, toolName: {}, quantity: {}, membershipNumber: {}, register_member: {}",
@@ -42,7 +45,7 @@ public class CalculatePriceWorker {
         try {
 
             Map<String, Object> result = calculatePriceService.calculatePrice(
-                    toolType, toolName, quantity, membershipNumber, register_member
+                    toolType, toolName, quantity, membershipNumber, register_member, hireDays, distributionType
             );
 
             client.newCompleteCommand(job.getKey())
