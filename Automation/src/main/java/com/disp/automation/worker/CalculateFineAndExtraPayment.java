@@ -1,4 +1,4 @@
-/*package com.disp.automation.worker;
+package com.disp.automation.worker;
 
 import io.camunda.client.annotation.JobWorker;
 import io.camunda.zeebe.client.api.response.ActivatedJob;
@@ -62,4 +62,4 @@ public class CalculateFineAndExtraPayment {
                 .send()
                 .join();
     }
-} */
+} 
