@@ -1,4 +1,4 @@
-/*package com.disp.automation.worker;
+package com.disp.automation.worker;
 
 import io.camunda.client.annotation.JobWorker;
 import io.camunda.zeebe.client.api.response.ActivatedJob;
@@ -10,7 +10,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 
-@SpringBootApplication
+@Component
 public class CalculateFineAndExtraPayment {
     @JobWorker(type = "calculateFine")
     public void handleCalculateFine(final JobClient client, final ActivatedJob job) {
@@ -47,7 +47,7 @@ public class CalculateFineAndExtraPayment {
         Map<String, Object> result = new HashMap<>();
 
         // damageNoted comes from the Receive Tools user task form
-        boolean damageNoted = (boolean) vars.get("damageNoted");
+        boolean damageNoted = (boolean) vars.getOrDefault("damageNoted", false);
 
         double totalPayment = 0.0;
         if (damageNoted) {
@@ -62,4 +62,4 @@ public class CalculateFineAndExtraPayment {
                 .send()
                 .join();
     }
-} */
+} 
