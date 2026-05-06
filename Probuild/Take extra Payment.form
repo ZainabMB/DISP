@@ -1,0 +1,65 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "take-extra-payment-1aznaxq",
+  "components": [
+    {
+      "label": "Extra Charge Amount",
+      "type": "number",
+      "layout": {
+        "row": "Row_1olw4at",
+        "columns": null
+      },
+      "id": "Field_0n9imu2",
+      "key": "extraCharge",
+      "readonly": true
+    },
+    {
+      "label": "Reason",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1uwnyld",
+        "columns": null
+      },
+      "id": "Field_1ilxjim",
+      "key": "chargeReason",
+      "readonly": true
+    },
+    {
+      "label": "Payment Method",
+      "values": [
+        {
+          "label": "Cash",
+          "value": "cash"
+        },
+        {
+          "label": "Card",
+          "value": "card"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0holxhr",
+        "columns": null
+      },
+      "id": "Field_0p5gzul",
+      "key": "paymentMethod"
+    },
+    {
+      "label": "Confirm Payment",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_1j2v297",
+        "columns": null
+      },
+      "id": "Field_0k9pyis",
+      "key": "extraPaymentConfirmed"
+    }
+  ],
+  "type": "default"
+}

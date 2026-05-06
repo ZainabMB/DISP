@@ -1,0 +1,170 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "0e2f930"
+  },
+  "schemaVersion": 19,
+  "id": "make-discounted-payment-1cnon3y",
+  "components": [
+    {
+      "text": "### Payment Summary",
+      "type": "text",
+      "id": "Heading_PaymentSummary",
+      "layout": {
+        "row": "Row_Header",
+        "col": 16
+      }
+    },
+    {
+      "label": "Order Total",
+      "type": "number",
+      "id": "Number_OrderTotal",
+      "key": "orderTotal",
+      "readonly": true,
+      "appearance": {
+        "prefixAdorner": "£"
+      },
+      "layout": {
+        "row": "Row_Totals",
+        "col": 5
+      },
+      "serializeToString": false
+    },
+    {
+      "label": "Discount",
+      "type": "number",
+      "id": "Number_DiscountPercentage",
+      "key": "discountPercentage",
+      "readonly": true,
+      "appearance": {
+        "suffixAdorner": "%"
+      },
+      "layout": {
+        "row": "Row_Totals",
+        "col": 5
+      }
+    },
+    {
+      "label": "Final Amount",
+      "type": "number",
+      "id": "Number_FinalAmount",
+      "key": "finalAmount",
+      "readonly": true,
+      "appearance": {
+        "prefixAdorner": "$"
+      },
+      "layout": {
+        "row": "Row_Totals",
+        "col": 6
+      }
+    },
+    {
+      "text": "##### Complete Payment",
+      "type": "text",
+      "id": "Subheading_PaymentMethod",
+      "layout": {
+        "row": "Row_SubHeader",
+        "col": 16
+      }
+    },
+    {
+      "label": "Payment Method",
+      "values": [
+        {
+          "label": "Credit Card",
+          "value": "creditCard"
+        },
+        {
+          "label": "PayPal",
+          "value": "paypal"
+        },
+        {
+          "label": "Bank Transfer",
+          "value": "bankTransfer"
+        }
+      ],
+      "type": "select",
+      "id": "Select_PaymentMethod",
+      "key": "paymentMethod",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_1sccisu",
+        "col": 16
+      }
+    },
+    {
+      "label": "Cardholder Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_PaymentSelection",
+        "columns": null
+      },
+      "id": "Field_0pw2m8y",
+      "key": "textfield_cpdbvs",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Card Number",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1mxvs02",
+        "columns": null
+      },
+      "id": "Field_13ceufi",
+      "key": "textfield_9c0jtk",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Expiry Date",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1ukxlap",
+        "columns": null
+      },
+      "id": "Field_1jct0t5",
+      "key": "textfield_u1fjr5",
+      "validate": {
+        "required": true
+      },
+      "properties": { },
+      "appearance": { },
+      "description": "MM/YY"
+    },
+    {
+      "label": "CVV",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1ukxlap",
+        "columns": null
+      },
+      "id": "Field_1fgqy7f",
+      "key": "textfield_fbulhu",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "I confirm the payment details are correct and wish to proceed.",
+      "type": "checkbox",
+      "id": "Checkbox_ConfirmPayment",
+      "key": "confirmPayment",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_Confirmation",
+        "col": 16
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

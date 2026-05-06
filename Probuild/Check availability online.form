@@ -1,0 +1,80 @@
+{
+  "components": [
+    {
+      "label": "Hire or Sale",
+      "type": "textfield",
+      "id": "Field_0c0ok1d",
+      "key": "toolType",
+      "readonly": true,
+      "expression": "=toolType",
+      "layout": {
+        "row": "Row_1yf6p0w"
+      }
+    },
+    {
+      "label": "Tool Name",
+      "type": "select",
+      "id": "Field_1vavh7o",
+      "key": "toolName",
+      "valuesExpression": "=availableTools",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "Row_1hxxdn2"
+      }
+    },
+    {
+      "label": "Quantity",
+      "type": "number",
+      "id": "Field_0xhy17b",
+      "key": "quantity",
+      "decimalDigits": 0,
+      "defaultValue": 1,
+      "validate": {
+        "required": true,
+        "min": 1,
+        "max": "=if toolType = \"HIRE\" then 1 else if toolName != null then availableTools[value = toolName][1].quantity else 1"
+      }
+    },
+    {
+      "label": "Distribution Type",
+      "type": "select",
+      "id": "Field_00zg8c6",
+      "key": "distributionType",
+      "valuesExpression": "= if toolType = \"HIRE\" then [{\"label\":\"Pickup\",\"value\":\"pickup\"}] else if toolType = \"SALE\" then [{\"label\":\"Pickup\",\"value\":\"pickup\"},{\"label\":\"Delivery\",\"value\":\"delivery\"}] else []",
+      "layout": {
+        "row": "Row_093ve9v"
+      },
+      "description": "*£2 delivery fee",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Days to Hire for?",
+      "type": "number",
+      "layout": {
+        "row": "Row_0l4w80b",
+        "columns": null
+      },
+      "id": "Field_18e22wd",
+      "key": "hireDays",
+      "conditional": {
+        "hide": "=toolType = \"SALE\""
+      },
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.46.1"
+  },
+  "schemaVersion": 19,
+  "id": "check-availability-online-0go1hen",
+  "type": "default"
+}

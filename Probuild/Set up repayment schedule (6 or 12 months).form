@@ -1,0 +1,76 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "repaymentSchedule",
+  "components": [
+    {
+      "label": "Customer Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1nbotr0",
+        "columns": null
+      },
+      "id": "Field_1rwba49",
+      "key": "customerName",
+      "readonly": true
+    },
+    {
+      "label": "Total Amount",
+      "type": "number",
+      "layout": {
+        "row": "Row_0s3fto5",
+        "columns": null
+      },
+      "id": "Field_15re3ux",
+      "key": "orderTotal",
+      "readonly": true
+    },
+    {
+      "label": "Repayment Term",
+      "values": [
+        {
+          "label": "6 months",
+          "value": "sixMonths"
+        },
+        {
+          "label": "12 months",
+          "value": "twelveMonths"
+        }
+      ],
+      "type": "radio",
+      "layout": {
+        "row": "Row_1dfz7mv",
+        "columns": null
+      },
+      "id": "Field_1i9ygds",
+      "key": "repaymentTerm"
+    },
+    {
+      "label": "Monthly payment amount",
+      "type": "number",
+      "layout": {
+        "row": "Row_0jjemsn",
+        "columns": null
+      },
+      "id": "Field_0t4mwid",
+      "key": "monthlyPayment",
+      "readonly": true
+    },
+    {
+      "label": "Confirm schedule set up",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_00ui636",
+        "columns": null
+      },
+      "id": "Field_1m6r4t4",
+      "key": "scheduleConfirmed"
+    }
+  ],
+  "type": "default"
+}

@@ -1,0 +1,445 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "tag-and-log-tools-for-maintenance-1bn16hp",
+  "components": [
+    {
+      "text": "### Tool Identification",
+      "type": "text",
+      "id": "Heading_tool_id",
+      "layout": {
+        "row": "row-1",
+        "col": 16
+      }
+    },
+    {
+      "label": "Tool ID / Asset Number",
+      "type": "textfield",
+      "id": "Field_toolId",
+      "key": "toolId",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-2",
+        "col": 8
+      }
+    },
+    {
+      "label": "Tool Name",
+      "type": "textfield",
+      "id": "Field_toolName",
+      "key": "toolName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-2",
+        "col": 8
+      }
+    },
+    {
+      "label": "Tool Category",
+      "values": [
+        {
+          "label": "Hand Tool",
+          "value": "handTool"
+        },
+        {
+          "label": "Power Tool",
+          "value": "powerTool"
+        },
+        {
+          "label": "Measurement Tool",
+          "value": "measurementTool"
+        },
+        {
+          "label": "Specialty Equipment",
+          "value": "specialty"
+        }
+      ],
+      "type": "select",
+      "id": "Field_toolCategory",
+      "key": "toolCategory",
+      "layout": {
+        "row": "row-3",
+        "col": 8
+      }
+    },
+    {
+      "label": "Storage Location",
+      "type": "textfield",
+      "id": "Field_storageLocation",
+      "key": "storageLocation",
+      "description": "Bin, Shelf, Cabinet",
+      "layout": {
+        "row": "row-3",
+        "col": 8
+      }
+    },
+    {
+      "label": "Tool Description",
+      "type": "textarea",
+      "id": "Field_toolDescription",
+      "key": "toolDescription",
+      "layout": {
+        "row": "row-4",
+        "col": 16
+      }
+    },
+    {
+      "text": "### Checkout Information",
+      "type": "text",
+      "id": "Heading_checkout",
+      "layout": {
+        "row": "row-5",
+        "col": 16
+      }
+    },
+    {
+      "label": "Employee Name",
+      "type": "textfield",
+      "id": "Field_checkoutEmployeeName",
+      "key": "checkoutEmployeeName",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-6",
+        "col": 8
+      }
+    },
+    {
+      "label": "Employee ID",
+      "type": "textfield",
+      "id": "Field_checkoutEmployeeId",
+      "key": "checkoutEmployeeId",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-6",
+        "col": 8
+      }
+    },
+    {
+      "label": "Work Order Number / Job ID",
+      "type": "textfield",
+      "id": "Field_workOrderNumber",
+      "key": "workOrderNumber",
+      "layout": {
+        "row": "row-7",
+        "col": 8
+      }
+    },
+    {
+      "label": "Checkout Condition",
+      "values": [
+        {
+          "label": "Good",
+          "value": "good"
+        },
+        {
+          "label": "Minor Wear",
+          "value": "minorWear"
+        }
+      ],
+      "type": "select",
+      "id": "Field_checkoutCondition",
+      "key": "checkoutCondition",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-7",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_checkoutDate",
+      "key": "checkoutDate",
+      "dateLabel": "Checkout Date",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-8",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "time",
+      "type": "datetime",
+      "id": "Field_checkoutTime",
+      "key": "checkoutTime",
+      "timeLabel": "Checkout Time",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-8",
+        "col": 8
+      },
+      "timeInterval": 15
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_expectedReturnDate",
+      "key": "expectedReturnDate",
+      "dateLabel": "Expected Return Date",
+      "validate": {
+        "required": true
+      },
+      "layout": {
+        "row": "row-9",
+        "col": 8
+      }
+    },
+    {
+      "label": "Checkout Notes",
+      "type": "textarea",
+      "id": "Field_checkoutNotes",
+      "key": "checkoutNotes",
+      "layout": {
+        "row": "row-10",
+        "col": 16
+      }
+    },
+    {
+      "text": "### Check-in Information",
+      "type": "text",
+      "id": "Heading_checkin",
+      "layout": {
+        "row": "row-11",
+        "col": 16
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_returnDate",
+      "key": "returnDate",
+      "dateLabel": "Return Date",
+      "layout": {
+        "row": "row-12",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "time",
+      "type": "datetime",
+      "id": "Field_returnTime",
+      "key": "returnTime",
+      "timeLabel": "Return Time",
+      "layout": {
+        "row": "row-12",
+        "col": 8
+      },
+      "timeInterval": 15
+    },
+    {
+      "label": "Return Condition",
+      "values": [
+        {
+          "label": "Good",
+          "value": "good"
+        },
+        {
+          "label": "Damaged",
+          "value": "damaged"
+        },
+        {
+          "label": "Needs Repair",
+          "value": "needsRepair"
+        },
+        {
+          "label": "Needs Calibration",
+          "value": "needsCalibration"
+        }
+      ],
+      "type": "select",
+      "id": "Field_returnCondition",
+      "key": "returnCondition",
+      "layout": {
+        "row": "row-13",
+        "col": 8
+      }
+    },
+    {
+      "label": "Receiving Employee Name",
+      "type": "textfield",
+      "id": "Field_receivingEmployeeName",
+      "key": "receivingEmployeeName",
+      "layout": {
+        "row": "row-13",
+        "col": 8
+      }
+    },
+    {
+      "label": "Return Notes",
+      "type": "textarea",
+      "id": "Field_returnNotes",
+      "key": "returnNotes",
+      "layout": {
+        "row": "row-14",
+        "col": 16
+      }
+    },
+    {
+      "text": "### Tag Information (for Out-of-Service tools)",
+      "type": "text",
+      "id": "Heading_tag",
+      "layout": {
+        "row": "row-15",
+        "col": 16
+      }
+    },
+    {
+      "label": "Tag Number",
+      "type": "textfield",
+      "id": "Field_tagNumber",
+      "key": "tagNumber",
+      "layout": {
+        "row": "row-16",
+        "col": 8
+      }
+    },
+    {
+      "label": "Tag Status",
+      "values": [
+        {
+          "label": "Out of Service",
+          "value": "outOfService"
+        },
+        {
+          "label": "Do Not Operate",
+          "value": "doNotOperate"
+        },
+        {
+          "label": "Needs Repair",
+          "value": "needsRepair"
+        }
+      ],
+      "type": "select",
+      "id": "Field_tagStatus",
+      "key": "tagStatus",
+      "layout": {
+        "row": "row-16",
+        "col": 8
+      }
+    },
+    {
+      "label": "Reason for Tag",
+      "type": "textarea",
+      "id": "Field_reasonForTag",
+      "key": "reasonForTag",
+      "layout": {
+        "row": "row-17",
+        "col": 16
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_dateTagged",
+      "key": "dateTagged",
+      "dateLabel": "Date Tagged",
+      "layout": {
+        "row": "row-18",
+        "col": 8
+      }
+    },
+    {
+      "label": "Tagged By (Employee Name)",
+      "type": "textfield",
+      "id": "Field_taggedBy",
+      "key": "taggedBy",
+      "layout": {
+        "row": "row-18",
+        "col": 8
+      }
+    },
+    {
+      "subtype": "date",
+      "type": "datetime",
+      "id": "Field_dateTagRemoved",
+      "key": "dateTagRemoved",
+      "dateLabel": "Date Tag Removed",
+      "layout": {
+        "row": "row-19",
+        "col": 8
+      }
+    },
+    {
+      "label": "Tag Removed By (Employee Name)",
+      "type": "textfield",
+      "id": "Field_tagRemovedBy",
+      "key": "tagRemovedBy",
+      "layout": {
+        "row": "row-19",
+        "col": 8
+      }
+    },
+    {
+      "text": "### Signatures",
+      "type": "text",
+      "id": "Heading_signatures",
+      "layout": {
+        "row": "row-20",
+        "col": 16
+      }
+    },
+    {
+      "label": "Signature of Employee Checking In",
+      "type": "textfield",
+      "id": "Field_signatureCheckin",
+      "key": "signatureCheckin",
+      "description": "Typing your full name serves as your digital signature.",
+      "layout": {
+        "row": "row-21",
+        "col": 16
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Signature of Employee Checking Out",
+      "type": "textfield",
+      "id": "Field_signatureCheckout",
+      "key": "signatureCheckout",
+      "description": "Typing your full name serves as your digital signature.",
+      "layout": {
+        "row": "row-21",
+        "col": 16
+      },
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Signature of Supervisor",
+      "type": "textfield",
+      "id": "Field_signatureSupervisor",
+      "key": "signatureSupervisor",
+      "description": "Typing your full name serves as your digital signature.",
+      "layout": {
+        "row": "row-22",
+        "col": 10
+      },
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}
