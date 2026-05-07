@@ -1,0 +1,150 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "882a44a"
+  },
+  "schemaVersion": 19,
+  "id": "activate-rental-agreement-1dq0bzt",
+  "components": [
+    {
+      "text": "### Activate Rental Agreement",
+      "type": "text",
+      "layout": {
+        "row": "Row_09tbqqr",
+        "columns": null
+      },
+      "id": "Field_1vmu038"
+    },
+    {
+      "label": "Customer Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1t9k0mc",
+        "columns": null
+      },
+      "id": "Field_0x1e5te",
+      "key": "customerName"
+    },
+    {
+      "label": "Customer ID",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1t9k0mc",
+        "columns": null
+      },
+      "id": "Field_1uavv6d",
+      "key": "customerId"
+    },
+    {
+      "label": "Hirer Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0avoers",
+        "columns": null
+      },
+      "id": "Field_1bec2gc",
+      "key": "hirerName"
+    },
+    {
+      "label": "Hirer ID",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0avoers",
+        "columns": null
+      },
+      "id": "Field_0h28nbd",
+      "key": "hireID",
+      "readonly": true
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Rental Start Date ",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_06bz7mp",
+        "columns": null
+      },
+      "id": "Field_12ctytm",
+      "key": "rentalStart",
+      "disabled": false,
+      "readonly": true
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Rental End Date ",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_06bz7mp",
+        "columns": null
+      },
+      "id": "Field_0pchfq1",
+      "key": "rentalEnd",
+      "disabled": false,
+      "disallowPassedDates": true,
+      "properties": { },
+      "readonly": true
+    },
+    {
+      "label": "Tool Hired",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0rvkmnz",
+        "columns": null
+      },
+      "id": "Field_0hlj9jl",
+      "key": "toolName",
+      "readonly": true
+    },
+    {
+      "label": "Mailing Address",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1u9thwz",
+        "columns": null
+      },
+      "id": "Field_15pb3m2",
+      "key": "mailingAddress",
+      "validate": { }
+    },
+    {
+      "label": "Customer Signature",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_046o9i3",
+        "columns": null
+      },
+      "id": "Field_07766y9",
+      "key": "customerSignature",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Hirer Signature",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_046o9i3",
+        "columns": null
+      },
+      "id": "Field_0rmm0mr",
+      "key": "hirerSignature",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "I confirm the equipment is in good condition and I accept full responsibility for its safe return as per the [Terms & Conditions].",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0x9rxky",
+        "columns": null
+      },
+      "id": "Field_02xpi31",
+      "key": "TnC"
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}

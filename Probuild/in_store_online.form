@@ -1,0 +1,60 @@
+{
+  "components": [
+    {
+      "label": "Select shopping option",
+      "values": [
+        {
+          "label": "in-store",
+          "value": "in_store"
+        },
+        {
+          "label": "online",
+          "value": "online"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0eb2717",
+        "columns": null
+      },
+      "id": "Field_1kkf39y",
+      "key": "in_store_online",
+      "defaultValue": "in_store",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Hire or Sale ",
+      "values": [
+        {
+          "label": "Hire",
+          "value": "HIRE"
+        },
+        {
+          "label": "Sale",
+          "value": "SALE"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0zml5sk",
+        "columns": null
+      },
+      "id": "Field_1f4sx8o",
+      "key": "toolType",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.46.1"
+  },
+  "schemaVersion": 19,
+  "id": "in_store_online",
+  "type": "default"
+}

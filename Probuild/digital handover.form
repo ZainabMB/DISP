@@ -1,0 +1,80 @@
+{
+  "components": [
+    {
+      "text": "### Digital Handover Form",
+      "type": "text",
+      "layout": {
+        "row": "Row_1hwu6lf",
+        "columns": null
+      },
+      "id": "Field_09h7f5u"
+    },
+    {
+      "label": "Tool Serial Number",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1vzzixu",
+        "columns": null
+      },
+      "id": "Field_0ozxjg7",
+      "key": "serialNumber",
+      "readonly": true
+    },
+    {
+      "label": "Condition Notes",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_14l7286",
+        "columns": null
+      },
+      "id": "Field_1g5n4jg",
+      "key": "conditionNotes"
+    },
+    {
+      "label": "Fault Description",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0778j9o",
+        "columns": null
+      },
+      "id": "Field_13axxks",
+      "key": "faultDescription"
+    },
+    {
+      "label": "Select expected maintenance option",
+      "values": [
+        {
+          "label": "Routine Maintenance",
+          "value": "routineMaintenance"
+        },
+        {
+          "label": "Decommissioned",
+          "value": "decommissioned"
+        },
+        {
+          "label": "Repair Needed",
+          "value": "repairNeeded"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_037s5jr",
+        "columns": null
+      },
+      "id": "Field_1m61omo",
+      "key": "ExpectedMaintenanceOption",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "digitalHandover",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.9.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.46.1"
+  },
+  "schemaVersion": 19
+}
