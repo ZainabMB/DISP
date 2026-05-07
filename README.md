@@ -22,7 +22,7 @@ The [Operational BPMN model and forms](https://github.com/ZainabMB/DISP/tree/6c3
 
 The [Automation Folder](https://github.com/ZainabMB/DISP/blob/main/Automation) contains all the Java code used to automate the operational model.
 
-The [Database Artifacts](https://github.com/ZainabMB/DISP/blob/main/Database%20Artefacts) contain the table schema(s) creation script for the Java Automation.
+The [Database Artifacts](https://github.com/ZainabMB/DISP/tree/08aa210e9f1650c3ebadb5fc387511f71489e064/Database%20Artefacts) contain the table schema(s) creation script for the Java Automation.
 
 The [I* Model](https://github.com/ZainabMB/DISP/blob/main/i*%20Models)s Folder contains the i* Model saved as a .txt file, ready to be downloaded and opened within the piStar tool.
 
