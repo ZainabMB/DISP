@@ -8,11 +8,11 @@ and Dominic Tong.
 
 | Name | Contributions |
 |---|---|
-| Zainab Muhammad | I* model stategic dependency and strategic rationale (contributer), Automation (as per commits) (leader), forms (contributer), integration  of components (leader), DB creation and handling, operational model |
-| Daelyn Salim | Strategic bpmn model, operational bpmn model, testing report, forms, automation (as per commits) |
-| Vasiliqi Macolli |Strategic bpmn model, operational bpmn model, testing report, automation (as per commits)  |
-| Lauren Buenagua |Strategic bpmn model, operational bpmn model, some testing, automation (as per commits)|
-| Dominic Tong | |
+| Zainab Muhammad | I* model stategic dependency and strategic rationale (contributer), Automation (as per commits) (leader), forms (contributer), integration  of components (leader), DB creation and handling (leader), operational model (contributer), operational bpmn model (contributer)  |
+| Daelyn Salim | Strategic bpmn model (contributer), operational bpmn model (contributer), testing report (leader), forms (contributer), automation (as per commits) (contributer)|
+| Vasiliqi Macolli |Strategic bpmn model (leader), operational bpmn model (leader), testing report (contributer), automation (as per commits), DB creation and handling (contributer)  |
+| Lauren Buenagua |Strategic bpmn model (contributer), operational bpmn model (contributer), testing report (contributer), automation (as per commits) (contributer) |
+| Dominic Tong | I* model stategic dependency and strategic rationale (contributer), Automation (as per commits) (contributer), Testing report (contributer) |
 
 The Automation Folder contains all the relevant code to run. The entity package maps out the database, the repository package makes calls to the database, the service package contains all the business logic, and the worker package makes calls to Camunda. We used a PostGreSQL Database and the schema of the database ER model is linked inside, called "probuilds er model.png"
 
