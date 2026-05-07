@@ -162,7 +162,7 @@ cd ~/Downloads/camunda8-getting-started-bundle/c8run-8.9.0/
 CREATE SCHEMA probuilds;
 CREATE SCHEMA fintrust;
 ```
-then run [db.sql ](https://github.com/ZainabMB/DISP/blob/main/Database%2520Artefacts)
+then run [db.sql ](https://github.com/ZainabMB/DISP/tree/08aa210e9f1650c3ebadb5fc387511f71489e064/Database%20Artefacts)
 
 **3. Run the SQL scripts** to create tables, enums and seed data.
 
