@@ -8,7 +8,7 @@ and Dominic Tong.
 
 | Name | Contributions |
 |---|---|
-| Zainab Muhammad | I* model stategic dependency and strategic rationale (contributer), Automation (as per commits) (leader), forms (contributer), integration  of components (leader), DB creation and handling (leader), operational model (contributer), operational bpmn model (contributer)  |
+| Zainab Muhammad | I* model stategic dependency and strategic rationale (contributer), Automation (as per commits) (leader), forms (contributer), integration  of components (leader), DB creation and handling (leader),  operational bpmn model (contributer), testing report (contributer)  |
 | Daelyn Salim | Strategic bpmn model (contributer), operational bpmn model (contributer), testing report (leader), forms (contributer), automation (as per commits) (contributer)|
 | Vasiliqi Macolli |Strategic bpmn model (leader), operational bpmn model (leader), testing report (contributer), automation (as per commits), DB creation and handling (contributer)  |
 | Lauren Buenagua |Strategic bpmn model (contributer), operational bpmn model (contributer), testing report (contributer), automation (as per commits) (contributer) |
