@@ -16,41 +16,38 @@ and Dominic Tong.
 
 The Automation Folder contains all the relevant code to run. The entity package maps out the database, the repository package makes calls to the database, the service package contains all the business logic, and the worker package makes calls to Camunda. We used a PostGreSQL Database and the schema of the database ER model is linked inside, called "probuilds er model.png"
 
-The [Operational BPMN model and forms](url) 
+The [Strategic Business Process Model](https://github.com/ZainabMB/DISP/blob/main/Strategic%2520Business%2520Process%2520Model) shows the BPMN strategic model of probuilds process.
 
-The Probuild Folder contains all the Operational Model and the Forms
+The [Operational BPMN model and forms](https://github.com/ZainabMB/DISP/blob/main/Operational%2520BPMN%2520model%2520and%2520forms) contains the operational model and the forms needed to deploy.
 
-The I* Model Folder contains the i* Model saved as a .txt file, ready to be downloaded and opened within the piStar tool.
+The [Automation Folder](https://github.com/ZainabMB/DISP/blob/main/Automation) contains all the Java code used to automate the operational model.
+
+The [Database Artifacts](https://github.com/ZainabMB/DISP/blob/main/Database%2520Artefacts) contain the table schema(s) creation script for the Java Automation.
+
+The [I* Model](https://github.com/ZainabMB/DISP/blob/main/i*%2520Models)s Folder contains the i* Model saved as a .txt file, ready to be downloaded and opened within the piStar tool.
 
 The Strategic Dependency Model will be updated and edited via the .txt file itself, to open it download the file and open it within piStar (https://www.cin.ufpe.br/~jhcp/pistar/tool/).
 
 # ProBuilds Tool Management System
 
 A business process automation system built with **Camunda 8**, **Spring Boot**, and **PostgreSQL**, 
-designed to manage the end-to-end lifecycle of tool hire and sale operations for a tools retailer.
+designed to manage the end-to-end lifecycle of tool hire and sale operations for a tools retailer, ProBuilds Ltd.
 
 ---
 
-## Overview
-
-This projects automates the full customer journey from tool selection through to order fulfilment, 
-integrating membership management, payment processing, credit applications, and inventory tracking 
-into a set of coordinated BPMN processes.
-
----
 
 ## Features
 
 ### Customer Journey
 - In-store and online order flows
 - Tool availability checking with real-time stock from individual tool instances
-- Dynamic pricing based on tool type, quantity, and hire duration
+- Dynamic pricing based on tool type and hire duration
 - Delivery and pickup distribution options with a £4 delivery fee
 
 ### Membership & Loyalty
 - Member registration with automatic ID generation
 - Membership validation against the database
-- Loyalty points system — 100 points = 1% discount, max 10%
+- Loyalty points system — 100 points = 1% discount, max 10% (not fully implemented)
 - £10 membership registration fee added to order total
 
 ### Payment Processing
@@ -93,27 +90,6 @@ into a set of coordinated BPMN processes.
 | Process Modelling | Camunda Modeler |
 | Process Monitoring | Camunda Operate |
 
----
-
-## Architecture
-
-The system is built around two collaborating BPMN processes:
-
-**MainProcess** — the primary customer-facing process covering:
-- Tool selection and availability check
-- Membership validation and registration
-- Price calculation with loyalty discounts
-- Payment collection
-- Order creation and fulfilment notification
-
-**Tool Hire Services Process** — the operational fulfilment process covering:
-- Tool preparation and dispatch
-- Rental agreement activation
-- Return processing and condition assessment
-- Maintenance authorisation and tool lifecycle management
-
-The two processes communicate via **Camunda message events**, using `orderId` and `serialNumber` 
-as correlation keys depending on the stage of the process.
 
 ---
 
@@ -186,7 +162,7 @@ cd ~/Downloads/camunda8-getting-started-bundle/c8run-8.9.0/
 CREATE SCHEMA probuilds;
 CREATE SCHEMA fintrust;
 ```
-then run db.sql 
+then run [db.sql ](https://github.com/ZainabMB/DISP/blob/main/Database%2520Artefacts)
 
 **3. Run the SQL scripts** to create tables, enums and seed data.
 
