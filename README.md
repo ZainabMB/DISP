@@ -16,15 +16,15 @@ and Dominic Tong.
 
 The Automation Folder contains all the relevant code to run. The entity package maps out the database, the repository package makes calls to the database, the service package contains all the business logic, and the worker package makes calls to Camunda. We used a PostGreSQL Database and the schema of the database ER model is linked inside, called "probuilds er model.png"
 
-The [Strategic Business Process Model](https://github.com/ZainabMB/DISP/blob/main/Strategic%2520Business%2520Process%2520Model) shows the BPMN strategic model of probuilds process.
+The [Strategic Business Process Model](https://github.com/ZainabMB/DISP/blob/main/Strategic%2520Business%20Process%20Model) shows the BPMN strategic model of probuilds process.
 
-The [Operational BPMN model and forms](https://github.com/ZainabMB/DISP/blob/main/Operational%2520BPMN%2520model%2520and%2520forms) contains the operational model and the forms needed to deploy.
+The [Operational BPMN model and forms](https://github.com/ZainabMB/DISP/blob/main/Operational%2520BPMN%2520model%20and%20forms) contains the operational model and the forms needed to deploy.
 
 The [Automation Folder](https://github.com/ZainabMB/DISP/blob/main/Automation) contains all the Java code used to automate the operational model.
 
-The [Database Artifacts](https://github.com/ZainabMB/DISP/blob/main/Database%2520Artefacts) contain the table schema(s) creation script for the Java Automation.
+The [Database Artifacts](https://github.com/ZainabMB/DISP/blob/main/Database%20Artefacts) contain the table schema(s) creation script for the Java Automation.
 
-The [I* Model](https://github.com/ZainabMB/DISP/blob/main/i*%2520Models)s Folder contains the i* Model saved as a .txt file, ready to be downloaded and opened within the piStar tool.
+The [I* Model](https://github.com/ZainabMB/DISP/blob/main/i*%20Models)s Folder contains the i* Model saved as a .txt file, ready to be downloaded and opened within the piStar tool.
 
 The Strategic Dependency Model will be updated and edited via the .txt file itself, to open it download the file and open it within piStar (https://www.cin.ufpe.br/~jhcp/pistar/tool/).
 
