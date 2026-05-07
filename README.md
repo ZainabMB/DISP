@@ -16,7 +16,7 @@ and Dominic Tong.
 
 The Automation Folder contains all the relevant code to run. The entity package maps out the database, the repository package makes calls to the database, the service package contains all the business logic, and the worker package makes calls to Camunda. We used a PostGreSQL Database and the schema of the database ER model is linked inside, called "probuilds er model.png"
 
-The [Strategic Business Process Model]([https://github.com/ZainabMB/DISP/blob/main/Strategic%2520Business%20Process%20Model](https://github.com/ZainabMB/DISP/tree/4e94dce68d8076a3e3e4e7145fb5fe441125f6d9/Strategic%20Business%20Process%20Model) shows the BPMN strategic model of probuilds process.
+The [Strategic Business Process Model](https://github.com/ZainabMB/DISP/tree/4e94dce68d8076a3e3e4e7145fb5fe441125f6d9/Strategic%20Business%20Process%20Model) shows the BPMN strategic model of probuilds process.
 
 The [Operational BPMN model and forms](https://github.com/ZainabMB/DISP/blob/main/Operational%2520BPMN%2520model%20and%20forms) contains the operational model and the forms needed to deploy.
 
