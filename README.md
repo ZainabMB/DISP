@@ -18,7 +18,7 @@ The Automation Folder contains all the relevant code to run. The entity package 
 
 The [Strategic Business Process Model](https://github.com/ZainabMB/DISP/tree/4e94dce68d8076a3e3e4e7145fb5fe441125f6d9/Strategic%20Business%20Process%20Model) shows the BPMN strategic model of probuilds process.
 
-The [Operational BPMN model and forms](https://github.com/ZainabMB/DISP/blob/main/Operational%2520BPMN%2520model%20and%20forms) contains the operational model and the forms needed to deploy.
+The [Operational BPMN model and forms](https://github.com/ZainabMB/DISP/tree/6c33683c06ebd68cfae95eb558968e4372b18c58/Operational%20BPMN%20model%20and%20forms) contains the operational model and the forms needed to deploy.
 
 The [Automation Folder](https://github.com/ZainabMB/DISP/blob/main/Automation) contains all the Java code used to automate the operational model.
 
