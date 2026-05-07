@@ -24,7 +24,7 @@ The [Automation Folder](https://github.com/ZainabMB/DISP/blob/main/Automation) c
 
 The [Database Artifacts](https://github.com/ZainabMB/DISP/tree/08aa210e9f1650c3ebadb5fc387511f71489e064/Database%20Artefacts) contain the table schema(s) creation script for the Java Automation.
 
-The [I* Model](https://github.com/ZainabMB/DISP/blob/main/i*%20Models)s Folder contains the i* Model saved as a .txt file, ready to be downloaded and opened within the piStar tool.
+The [I* Model](https://github.com/ZainabMB/DISP/tree/0eb8cc40d9fd3d5287b03bff8955ecf08ac6e9e0/i*%20Models)s Folder contains the i* Model saved as a .txt file, ready to be downloaded and opened within the piStar tool.
 
 The Strategic Dependency Model will be updated and edited via the .txt file itself, to open it download the file and open it within piStar (https://www.cin.ufpe.br/~jhcp/pistar/tool/).
 
