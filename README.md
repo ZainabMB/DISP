@@ -1,9 +1,9 @@
 This repository contains the files involved in the 3rd Year Development of Information Systems Project, this involves the work of Group 7, of which includes:
-Zainab Muhammad,
-Daelyn Salim,
-Vasiliqi Macolli,
-Lauren Buenagua,
-and Dominic Tong.
+Zainab Muhammad @ZainabMB
+Daelyn Salim @daelyn09,
+Vasiliqi Macolli @vasi-m,
+Lauren Buenagua @lrnbuen,
+and Dominic Tong @DominicTong.
 ## Contributors
 
 | Name | Contributions |
@@ -104,7 +104,6 @@ The system uses two schemas:
 - `hire_order` — hire transactions with condition logs and return tracking
 - `sale_order` — sale transactions
 - `order_tool_instance` — association between orders and specific tool instances
-- `credit_plan` — instalment plan records
 
 **`fintrust`** — credit processing data
 - `credit_plan` — credit applications and repayment schedules
