@@ -1,9 +1,11 @@
 This repository contains the files involved in the 3rd Year Development of Information Systems Project, this involves the work of Group 7, of which includes:
-Zainab Muhammad @ZainabMB
-Daelyn Salim @daelyn09,
-Vasiliqi Macolli @vasi-m,
-Lauren Buenagua @lrnbuen,
-and Dominic Tong @DominicTong.
+| Name | GitHub |
+|---|---|
+| Zainab Muhammad | [@ZainabMB](https://github.com/ZainabMB) |
+| Daelyn Salim | [@daelyn09](https://github.com/daelyn09) |
+| Vasiliqi Macolli | [@vasi-m](https://github.com/vasi-m) |
+| Lauren Buenagua | [@lrnbuen](https://github.com/lrnbuen) |
+| Dominic Tong | [@DominicTong](https://github.com/DominicTong) |
 ## Contributors
 
 | Name | Contributions |
